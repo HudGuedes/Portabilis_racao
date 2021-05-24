@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  host: localhost
+  username: guedes
+  password: '123456'
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: portabilis_development
+
+test:
+  <<: *default
+  database: portabilis_test
+production:
+  <<: *default
+  database: portabilis

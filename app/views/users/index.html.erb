@@ -1,0 +1,33 @@
+<h3>
+	Usuário
+	<% if can? :manage, User %>
+		<%= link_to('Novo usuário', new_user_registration_path, class: 'btn btn-primary float-end') %>
+	<% end %>
+</h3>
+<br clear="all">
+<% if @users.nil? %>
+	<div class="alert alert-info">
+		Neenhum usuario encontrado
+	</div>
+<% else %>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Email</th>
+				<th>Role</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @users.each do |user| %>
+				<tr>
+					<td><%= user.id %></td>
+					<td><%= user.name %></td>
+					<td><%= user.email %></td>
+					<td><%= user.admin ? 'Admin' : 'Operador' %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% end %>

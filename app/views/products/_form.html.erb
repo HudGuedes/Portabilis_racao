@@ -1,0 +1,36 @@
+<div class="container">
+  <%= form_with model: @product do |form| %>
+    <div class="form-group mb-3">
+      <%= form.label :title %>
+      <%= form.text_field :title, class: "form-control", autofocus: true %>
+      <% @product.errors.full_messages_for(:title).each do |message| %>
+        <div class="text-danger"><%= message %></div>
+      <% end %>
+    </div>
+
+    <div class="form-group mb-3">
+      <%= form.label :price %>
+      <%= form.text_field :price, class: "form-control", autofocus: true %>
+      <% @product.errors.full_messages_for(:price).each do |message| %>
+        <div class="text-danger"><%= message %></div>
+      <% end %>
+    </div>
+
+     <div class="form-group mb-3">
+      <%= form.label :image_url %>
+      <%= form.text_field :image_url, class: "form-control", autofocus: true %>
+      <% @product.errors.full_messages_for(:image_url).each do |message| %>
+        <div class="text-danger"><%= message %></div>
+      <% end %>
+    </div>
+
+    <div class="form-group mb-3">
+      <%= form.label :description %>
+      <%= form.text_area :description, class: "form-control", autofocus: true, rows: 20 %>
+      <% @product.errors.full_messages_for(:description).each do |message| %>
+        <div class="text-danger"><%= message %></div>
+      <% end %>
+    </div>
+    <%= form.submit class: "btn btn-dark btn-block" %>
+  <% end %>
+</div>

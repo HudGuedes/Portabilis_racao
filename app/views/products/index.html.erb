@@ -1,0 +1,41 @@
+<h3>
+	Produtos
+	<%= link_to('Novo produto', new_product_path, class: 'btn btn-primary float-end') %>
+</h3>
+<br clear="all">
+<% if @products.nil? %>
+	<div class="alert alert-info">
+		Neenhum produto encontrado
+	</div>
+<% else %>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Preço</th>
+				<th>#</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @products.each do |product| %>
+				<tr>
+					<td><%= product.id %></td>
+					<td><%= product.title %></td>
+					<td><%= price(product.price) %></td>
+					<td>
+						<div class="dropdown">
+						  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+						    Opções
+						  </button>
+						  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+						    <li><%= link_to('Editar', edit_product_path(product.id), class: 'dropdown-item') %></li>
+						    <li><%= link_to('Deletar', product_path(product.id), method: :delete, class: 'dropdown-item', data: {confirm: 'Tem certeza?'}) %></li>
+						  </ul>
+						</div>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% end %>
